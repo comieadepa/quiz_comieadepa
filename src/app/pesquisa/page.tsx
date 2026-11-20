@@ -176,10 +176,10 @@ export default function PesquisaPage() {
       };
 
       // Gravação EXCLUSIVA na tabela oficial aprovada com checagem rigorosa
-      const { data, error } = await supabase
+      // Nota: não usamos .select() porque a role anon não possui permissão de SELECT
+      const { error } = await supabase
         .from("respostas_pesquisa_oficial")
-        .insert([payloadOficial])
-        .select("id");
+        .insert([payloadOficial]);
 
       if (error) {
         // Se ocorrer conflito 23505 (duplicação de token), consulta o servidor para validar se a submissão realmente foi salva
