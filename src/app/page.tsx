@@ -1,8 +1,20 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ShieldCheck, Clock, Smartphone, ChevronRight } from "lucide-react";
+import { ShieldCheck, Clock, Smartphone, ChevronRight, CheckCircle2 } from "lucide-react";
 
 export default function Home() {
+  const [alreadyCompleted, setAlreadyCompleted] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isDone = sessionStorage.getItem("pesquisa_concluida_ago2026") === "true";
+      setAlreadyCompleted(isDone);
+    }
+  }, []);
+
   return (
     <main className="relative w-full min-h-[100dvh] bg-[#591013] flex flex-col items-center justify-between p-2.5 sm:p-5 md:p-8 short-screen-p select-none overflow-x-hidden overflow-y-auto">
       {/* Background Decorativo Institucional Sutil */}
@@ -45,7 +57,9 @@ export default function Home() {
           </h1>
 
           <p className="text-[#5C3D42] text-[11px] sm:text-sm md:text-base leading-relaxed max-w-lg mt-0.5 font-medium short-screen-desc">
-            Sua participação é anônima e contribui para o aprimoramento contínuo dos serviços e decisões da Convenção.
+            {alreadyCompleted
+              ? "Sua avaliação nesta sessão já foi registrada com sucesso. Agradecemos sua valiosa colaboração na AGO 2026."
+              : "Sua participação é anônima e contribui para o aprimoramento contínuo dos serviços e decisões da Convenção."}
           </p>
         </div>
 
@@ -67,17 +81,30 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Botão de Ação Principal (Fluido, Sem Sobreposição, Mobile-First) */}
+        {/* Botão de Ação Principal (Ativo ou Bloqueado caso já realizada) */}
         <div className="w-full max-w-md mt-2.5 sm:mt-5 short-screen-btn-box">
-          <Link
-            href="/pesquisa"
-            className="group relative inline-flex items-center justify-center w-full min-h-[46px] sm:min-h-[58px] py-3 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#800020] via-[#750215] to-[#54040E] hover:from-[#9D0F2D] hover:via-[#850B1D] hover:to-[#6E0A1E] text-white font-black tracking-wider text-sm sm:text-lg uppercase transition-all duration-200 shadow-xl shadow-[#800020]/35 border border-[#E5B533]/50 cursor-pointer active:scale-[0.98] short-screen-btn"
-          >
-            <span className="drop-shadow-sm flex items-center justify-center gap-2">
-              <span>INICIAR PESQUISA</span>
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform stroke-[3]" />
-            </span>
-          </Link>
+          {alreadyCompleted ? (
+            <button
+              type="button"
+              disabled
+              className="inline-flex items-center justify-center w-full min-h-[46px] sm:min-h-[58px] py-3 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl bg-[#D8C7B2]/60 text-[#7A6652] font-black tracking-wider text-sm sm:text-base uppercase border border-[#C5B39E] cursor-not-allowed shadow-none short-screen-btn select-none"
+            >
+              <span className="flex items-center justify-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-emerald-700 stroke-[2.5]" />
+                <span className="text-emerald-900 font-extrabold">PESQUISA JÁ REALIZADA</span>
+              </span>
+            </button>
+          ) : (
+            <Link
+              href="/pesquisa"
+              className="group relative inline-flex items-center justify-center w-full min-h-[46px] sm:min-h-[58px] py-3 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#800020] via-[#750215] to-[#54040E] hover:from-[#9D0F2D] hover:via-[#850B1D] hover:to-[#6E0A1E] text-white font-black tracking-wider text-sm sm:text-lg uppercase transition-all duration-200 shadow-xl shadow-[#800020]/35 border border-[#E5B533]/50 cursor-pointer active:scale-[0.98] short-screen-btn"
+            >
+              <span className="drop-shadow-sm flex items-center justify-center gap-2">
+                <span>INICIAR PESQUISA</span>
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform stroke-[3]" />
+              </span>
+            </Link>
+          )}
         </div>
 
       </div>

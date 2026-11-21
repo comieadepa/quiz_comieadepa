@@ -192,6 +192,9 @@ export default function PesquisaPage() {
             });
             const checkData = await checkRes.json();
             if (checkData.verified) {
+              if (typeof window !== "undefined") {
+                sessionStorage.setItem("pesquisa_concluida_ago2026", "true");
+              }
               setIsCompleted(true);
               return;
             }
@@ -205,6 +208,11 @@ export default function PesquisaPage() {
           "Não foi possível registrar suas respostas no servidor. Verifique a conexão do totem e clique em 'Tentar Novamente'. Todas as suas respostas foram preservadas."
         );
         return;
+      }
+
+      // Gravação confirmada com sucesso: marca na sessão do navegador
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("pesquisa_concluida_ago2026", "true");
       }
 
       // Somente avança para tela de agradecimento se a confirmação do banco foi bem-sucedida
