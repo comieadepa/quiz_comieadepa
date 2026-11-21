@@ -1,43 +1,91 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ShieldCheck, Clock, Smartphone, ChevronRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="relative w-screen h-screen overflow-hidden bg-[#591013] flex items-center justify-center select-none">
-      {/* 
-        Container com proporção estrita 1671 / 941 (16:9 estendido) da arte original.
-        Ocupa o máximo possível de largura ou altura sem distorcer ou cortar elementos.
-      */}
-      <div className="relative w-full h-full max-w-[calc(100vh*1671/941)] max-h-[calc(100vw*941/1671)] aspect-[1671/941] shadow-2xl">
-        {/* Arte institucional completa com alta fidelidade */}
-        <Image
-          src="/img/bg_pesquisaok.png"
-          alt="Pesquisa Institucional COMIEADEPA"
-          fill
-          priority
-          sizes="100vw"
-          className="object-contain pointer-events-none"
-        />
+    <main className="relative w-full min-h-[100dvh] bg-[#591013] flex flex-col items-center justify-between p-2.5 sm:p-5 md:p-8 short-screen-p select-none overflow-x-hidden overflow-y-auto">
+      {/* Background Decorativo Institucional Sutil */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#E5B533_1px,transparent_1px)] [background-size:20px_20px]" />
 
-        {/* 
-          Botão HTML 'INICIAR PESQUISA':
-          Posicionado com exatidão no centro da área livre (entre 63.8% e 77.8%, centro matemático em ~70.8%),
-          abaixo de todo o texto de apresentação e acima dos três indicadores inferiores.
-        */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[70.8%] -translate-y-1/2 z-20 w-[90%] sm:w-[60%] md:w-[48%] max-w-[430px] flex justify-center">
+      {/* Card Institucional Centralizado e Fluido */}
+      <div className="relative z-10 w-full max-w-[540px] md:max-w-[720px] lg:max-w-[900px] my-auto bg-gradient-to-b from-[#FFFDF9] via-[#FFF9F0] to-[#FBF3E4] border-[2px] sm:border-[3px] border-[#D8BC86] rounded-[20px] sm:rounded-[32px] shadow-[0_20px_50px_-10px_rgba(20,2,4,0.65)] p-3.5 sm:p-7 md:p-9 short-screen-card flex flex-col items-center text-center">
+        
+        {/* Faixa Superior: Brasão Oficial e Identificação */}
+        <div className="w-full flex flex-col items-center justify-center gap-1.5 sm:gap-3 mb-2 sm:mb-4 short-screen-gap">
+          <div className="relative w-[95px] h-[108px] sm:w-[135px] sm:h-[152px] md:w-[155px] md:h-[175px] short-screen-logo shrink-0 drop-shadow-[0_6px_12px_rgba(128,0,32,0.18)]">
+            <Image
+              src="/img/brasao_oficial_comieadepa.png"
+              alt="Brasão Oficial COMIEADEPA"
+              fill
+              priority
+              sizes="(max-width: 640px) 135px, 155px"
+              className="object-contain"
+            />
+          </div>
+
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#800020]/10 border border-[#800020]/20 text-[#800020] text-[10px] sm:text-xs md:text-sm font-black tracking-wider uppercase">
+            <span>AGO 2026</span>
+          </div>
+        </div>
+
+        {/* Títulos Oficiais */}
+        <div className="w-full flex flex-col items-center gap-1 sm:gap-1.5 mb-2 sm:mb-4 short-screen-gap">
+          <h2 className="text-[#800020] font-black text-lg sm:text-2xl md:text-3xl tracking-tight leading-tight uppercase font-serif short-screen-title">
+            COMIEADEPA
+          </h2>
+          <p className="text-[#8C6D47] text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase max-w-md short-screen-desc">
+            Convenção Interestadual de Ministros e Igrejas Evangélicas Assembleias de Deus no Pará
+          </p>
+
+          <div className="w-20 sm:w-32 h-[1.5px] sm:h-[2px] bg-gradient-to-r from-transparent via-[#C79C3B] to-transparent my-0.5 sm:my-2" />
+
+          <h1 className="text-[#1A0307] font-black text-base sm:text-2xl md:text-3xl tracking-tight leading-snug short-screen-subtitle">
+            Avaliação Institucional dos Ministros
+          </h1>
+
+          <p className="text-[#5C3D42] text-[11px] sm:text-sm md:text-base leading-relaxed max-w-lg mt-0.5 font-medium short-screen-desc">
+            Sua participação é anônima e contribui para o aprimoramento contínuo dos serviços e decisões da Convenção.
+          </p>
+        </div>
+
+        {/* Pilares Institucionais em Chips / Badges */}
+        <div className="w-full grid grid-cols-3 gap-1.5 sm:gap-2.5 max-w-md my-1.5 sm:my-3 short-screen-chips">
+          <div className="flex flex-col items-center justify-center p-1.5 sm:p-2 rounded-xl bg-[#FAF0E1] border border-[#E7CE9E] text-center short-screen-chip-item">
+            <ShieldCheck className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#800020] mb-0.5 shrink-0" />
+            <span className="text-[9px] sm:text-xs font-bold text-[#800020]">100% Anônimo</span>
+          </div>
+
+          <div className="flex flex-col items-center justify-center p-1.5 sm:p-2 rounded-xl bg-[#FAF0E1] border border-[#E7CE9E] text-center short-screen-chip-item">
+            <Clock className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#800020] mb-0.5 shrink-0" />
+            <span className="text-[9px] sm:text-xs font-bold text-[#800020]">Rápido (2 min)</span>
+          </div>
+
+          <div className="flex flex-col items-center justify-center p-1.5 sm:p-2 rounded-xl bg-[#FAF0E1] border border-[#E7CE9E] text-center short-screen-chip-item">
+            <Smartphone className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#800020] mb-0.5 shrink-0" />
+            <span className="text-[9px] sm:text-xs font-bold text-[#800020]">Mobile-First</span>
+          </div>
+        </div>
+
+        {/* Botão de Ação Principal (Fluido, Sem Sobreposição, Mobile-First) */}
+        <div className="w-full max-w-md mt-2.5 sm:mt-5 short-screen-btn-box">
           <Link
             href="/pesquisa"
-            className="group relative inline-flex items-center justify-center w-full py-4 sm:py-4.5 md:py-5 px-6 sm:px-8 text-base sm:text-lg md:text-xl font-extrabold tracking-wider text-white uppercase rounded-2xl sm:rounded-3xl shadow-xl transition-all duration-200 transform hover:scale-[1.03] active:scale-[0.98] border border-amber-300/30 overflow-hidden text-center cursor-pointer bg-gradient-to-r from-[#6b0814] via-[#850b1d] to-[#54040e] hover:from-[#7c0a1a] hover:via-[#9c0d22] hover:to-[#630510] shadow-rose-950/60 hover:shadow-rose-950/80"
+            className="group relative inline-flex items-center justify-center w-full min-h-[46px] sm:min-h-[58px] py-3 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#800020] via-[#750215] to-[#54040E] hover:from-[#9D0F2D] hover:via-[#850B1D] hover:to-[#6E0A1E] text-white font-black tracking-wider text-sm sm:text-lg uppercase transition-all duration-200 shadow-xl shadow-[#800020]/35 border border-[#E5B533]/50 cursor-pointer active:scale-[0.98] short-screen-btn"
           >
-            {/* Brilho sutil no hover */}
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
-            
-            <span className="relative z-10 drop-shadow-sm flex items-center justify-center gap-2">
-              INICIAR PESQUISA
+            <span className="drop-shadow-sm flex items-center justify-center gap-2">
+              <span>INICIAR PESQUISA</span>
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform stroke-[3]" />
             </span>
           </Link>
         </div>
+
       </div>
+
+      {/* Rodapé Institucional Discreto */}
+      <footer className="relative z-10 w-full text-center py-1 sm:py-2 text-[10px] sm:text-xs text-[#E5CCA0]/80 font-medium">
+        COMIEADEPA — Assembleia Geral Ordinária 2026 • Sistema de Coleta Segura
+      </footer>
     </main>
   );
 }

@@ -274,12 +274,12 @@ export default function PesquisaPage() {
       : Boolean(currentAnswer);
 
   return (
-    <main className="relative w-full min-h-screen min-h-[100dvh] bg-[#591013] flex flex-col items-center justify-center p-3 sm:p-5 md:p-8 landscape-compact-py overflow-x-hidden overflow-y-auto select-none">
+    <main className="relative w-full min-h-screen min-h-[100dvh] bg-[#591013] flex flex-col items-center justify-start sm:justify-center p-2 sm:p-5 md:p-8 landscape-compact-py overflow-x-hidden overflow-y-auto select-none">
       <div className="relative z-10 w-full flex justify-center py-1 sm:py-3">
         <section 
-          className="relative w-full bg-[#FFF9F0] border-[3px] sm:border-[4px] border-[#D8BC86] rounded-[20px] sm:rounded-[30px] shadow-[0_20px_45px_-8px_rgba(30,5,8,0.45)] p-4 sm:p-6 md:p-7 landscape-compact-card flex flex-col gap-y-3 sm:gap-y-4 md:gap-y-5"
+          className="relative w-full bg-[#FFF9F0] border-[2px] sm:border-[4px] border-[#D8BC86] rounded-[20px] sm:rounded-[30px] shadow-[0_20px_45px_-8px_rgba(30,5,8,0.45)] p-3 sm:p-6 md:p-7 landscape-compact-card flex flex-col gap-y-2.5 sm:gap-y-4 md:gap-y-5"
           style={{
-            width: "min(1380px, calc(100% - 24px))",
+            width: "min(1380px, calc(100% - 8px))",
             minHeight: "auto",
           }}
         >
@@ -553,14 +553,14 @@ export default function PesquisaPage() {
           )}
 
           {/* NAVEGAÇÃO INFERIOR */}
-          <div className="w-full shrink-0 pt-2.5 sm:pt-4 border-t border-[#E5CCA0]/80">
-            <footer className="flex flex-wrap items-center justify-between gap-3">
+          <div className="w-full shrink-0 pt-2 sm:pt-4 border-t border-[#E5CCA0]/80">
+            <footer className="flex items-center justify-between gap-2 sm:gap-3">
               {currentStep > 0 ? (
                 <button
                   type="button"
                   onClick={handlePrev}
                   disabled={isSubmitting}
-                  className="flex items-center justify-center gap-2 rounded-2xl border-2 border-[#800020] text-[#800020] hover:bg-[#F5EAD7] font-bold transition-colors cursor-pointer shadow-sm px-5 sm:px-7 py-2.5 sm:py-3 text-sm sm:text-base min-w-[120px] sm:min-w-[160px] h-[44px] sm:h-[54px] disabled:opacity-50"
+                  className="flex items-center justify-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-2xl border-2 border-[#800020] text-[#800020] hover:bg-[#F5EAD7] font-bold transition-colors cursor-pointer shadow-sm px-3 sm:px-7 py-2 sm:py-3 text-xs sm:text-base min-w-[90px] sm:min-w-[160px] h-[40px] sm:h-[54px] disabled:opacity-50"
                 >
                   <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-[#800020]" />
                   <span>Anterior</span>
@@ -568,7 +568,7 @@ export default function PesquisaPage() {
               ) : (
                 <Link
                   href="/"
-                  className="flex items-center justify-center gap-2 rounded-2xl border-2 border-[#DFC392] text-[#800020] hover:bg-[#F5EAD7] font-bold transition-colors shadow-sm px-5 sm:px-7 py-2.5 sm:py-3 text-sm sm:text-base min-w-[120px] sm:min-w-[160px] h-[44px] sm:h-[54px]"
+                  className="flex items-center justify-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-2xl border-2 border-[#DFC392] text-[#800020] hover:bg-[#F5EAD7] font-bold transition-colors shadow-sm px-3 sm:px-7 py-2 sm:py-3 text-xs sm:text-base min-w-[90px] sm:min-w-[160px] h-[40px] sm:h-[54px]"
                 >
                   <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-[#800020]" />
                   <span>Início</span>
@@ -579,7 +579,7 @@ export default function PesquisaPage() {
                 type="button"
                 onClick={handleNext}
                 disabled={!canAdvance || isSubmitting}
-                className={`flex items-center justify-center gap-2 rounded-2xl font-bold transition-all cursor-pointer shadow-lg px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base min-w-[130px] sm:min-w-[170px] h-[44px] sm:h-[54px] ${
+                className={`flex items-center justify-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-2xl font-bold transition-all cursor-pointer shadow-lg px-4 sm:px-8 py-2 sm:py-3 text-xs sm:text-base min-w-[110px] sm:min-w-[170px] h-[40px] sm:h-[54px] ${
                   !canAdvance || isSubmitting
                     ? "bg-[#D8C7B2]/70 text-[#9E8B78] border border-[#C5B39E] cursor-not-allowed shadow-none"
                     : submitError
