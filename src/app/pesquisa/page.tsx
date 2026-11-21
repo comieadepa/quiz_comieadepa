@@ -274,8 +274,8 @@ export default function PesquisaPage() {
       : Boolean(currentAnswer);
 
   return (
-    <main className="relative w-full min-h-screen min-h-[100dvh] bg-[#591013] flex flex-col items-center justify-start sm:justify-center p-2 sm:p-5 md:p-8 landscape-compact-py overflow-x-hidden overflow-y-auto select-none">
-      <div className="relative z-10 w-full flex justify-center py-1 sm:py-3">
+    <main className="relative w-full min-h-screen min-h-[100dvh] bg-[#591013] flex flex-col items-center justify-center p-2 sm:p-5 md:p-8 landscape-compact-py overflow-x-hidden overflow-y-auto select-none">
+      <div className="relative z-10 w-full flex justify-center py-1 sm:py-3 my-auto">
         <section 
           className="relative w-full bg-[#FFF9F0] border-[2px] sm:border-[4px] border-[#D8BC86] rounded-[20px] sm:rounded-[30px] shadow-[0_20px_45px_-8px_rgba(30,5,8,0.45)] p-3 sm:p-6 md:p-7 landscape-compact-card flex flex-col gap-y-2.5 sm:gap-y-4 md:gap-y-5"
           style={{

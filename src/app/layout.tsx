@@ -6,6 +6,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+import { DisablePinchZoom } from "@/components/DisablePinchZoom";
+
 export const metadata: Metadata = {
   title: "COMIEADEPA | Pesquisa Institucional AGO",
   description: "Sistema de Pesquisa Institucional Anônima da COMIEADEPA - Totem de Coleta de Opinião",
@@ -26,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="h-full">
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-900`}>
+        <DisablePinchZoom />
         {children}
       </body>
     </html>
